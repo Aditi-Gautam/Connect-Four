@@ -2,7 +2,6 @@ package com.example.connectfour;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.graphics.Bitmap;
 import android.view.MotionEvent;
@@ -19,13 +18,20 @@ public class MainActivity extends AppCompatActivity {
 
     int player = 2;
 
+    int[][] array = new int[][]{
+            { 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0},
+            { 0, 0, 0, 0, 0, 0, 0}
+    };
 
 
 
     private Connect4 gridFormation;
 
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     bitmap = Bitmap.createBitmap(imageView.getWidth(), imageView.getHeight(), Bitmap.Config.ARGB_8888);
                     bitmap = imageView.getDrawingCache();
                     gridFormation.colouredBlock(bitmap);
-
+                    gridFormation.getWinner(array);
                 }
                 return true;
             }
